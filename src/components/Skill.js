@@ -14,7 +14,7 @@ const Skill = () => {
   return (
     <div id="skill" className="skill-area">
       <div className="skill_container">
-      <SectionTitle subheading="What i will do for you" heading="My Skill" />
+      <SectionTitle subheading="" heading="My Skill" />
         <div className="skills">
           <ul className="skill-nav">
             {skillsName.map(name => (
