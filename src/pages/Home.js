@@ -8,6 +8,7 @@ import HeroSection from '../components/HeroSection';
 import { Skill } from '../components/Skill';
 import HeroSection2 from '../components/HeroSection2';
 import Particles from '../components/particles';
+import { Achievement } from '../components/Achievement';
 
 export default function Home() {
   return (
@@ -18,7 +19,9 @@ export default function Home() {
       <Skill/>
       <ServicesSection />
       <ProjectsSection />
+      <Achievement/>
       <TestimonialsSection />
+
       <ContactBanner />
     </div>
   );
