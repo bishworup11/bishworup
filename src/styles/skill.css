@@ -1,0 +1,257 @@
+body, html {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.skill_container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 50px 20px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.skill-area {
+  position: relative;
+  width: 100%;
+}
+
+.skills {
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.skill-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 25px;
+  width: 100%;
+}
+
+.skill-nav li {
+  border: solid 2px #172a45;
+  color: rgba(255, 255, 255, 0.85);
+  padding: 5px 15px;
+  cursor: pointer;
+  border-radius: 4px;
+  width: auto;
+  max-width: calc(50% - 5px);
+  height: auto;
+  min-height: 40px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.skill-nav li.active {
+  background-color: #172a45;
+  font-weight: 700;
+}
+
+.skill {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+}
+
+.skill .card {
+  flex: 1 1 calc(50% - 10px);
+  min-width: 200px;
+  max-width: 100%;
+  background-color: #1d293a;
+  padding: 20px;
+  border-radius: 4px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.skill .card h4 {
+  font-size: 18px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 10px;
+  padding-right: 40px;
+  word-wrap: break-word;
+}
+
+.skill .card p {
+  position: absolute;
+  background-color: #1d293a;
+  padding: 3px 5px;
+  top: 20px;
+  right: 15px;
+  font-weight: 700;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.skill .card .progress-ar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 6px;
+  background-color: #bad0f0;
+  border-radius: 0 0 4px 4px;
+}
+
+@media only screen and (max-width: 768px) {
+  .skill_container {
+    padding: 30px 15px;
+  }
+
+  .skills {
+    padding-left: 0;
+  }
+
+  .skill-nav li {
+    font-size: 14px;
+    min-height: 35px;
+    max-width: calc(50% - 5px);
+  }
+
+  .skill .card {
+    flex: 1 1 100%;
+  }
+
+  .skill .card h4 {
+    font-size: 16px;
+  }
+
+  .skill .card p {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .skill_container {
+    padding: 20px 10px;
+  }
+
+  .skill-nav li {
+    font-size: 12px;
+    min-height: 30px;
+    padding: 5px 10px;
+  }
+
+  .skill .card {
+    padding: 15px;
+  }
+
+  .skill .card h4 {
+    font-size: 14px;
+  }
+
+  .skill .card p {
+    top: 15px;
+    right: 10px;
+  }
+}
+/* #################################################################################### */
+
+.hero-section2 {
+  height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+  
+  margin-top: 15rem;
+  margin-bottom: 5rem;
+}
+
+.hero-section2__row {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.hero-section2__col {
+  margin: auto 0;
+}
+
+.hero-section2__greeting {
+  color: var(--custom-grey);
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.hero-section2__name {
+  color: var(--name-blue);
+  font-weight: 800;
+  font-size: 3rem;
+}
+
+.hero-section2__title {
+  color: var(--custom-grey);
+  font-size: 2rem;
+}
+
+.hero-section2__subtitle {
+  color: var(--custom-grey);
+  font-size: 1.5rem;
+}
+
+.hero-section2__social-links {
+  display: flex;
+  margin: 1rem 0;
+}
+
+.hero-section2__social-button {
+  color: var(--custom-blue);
+  padding: 0;
+  margin-right: 1rem;
+  border: none;
+  background: none;
+}
+
+.hero-section2__resume-button {
+  background-color: var(--custom-blue);
+  font-weight: bold;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+}
+
+.hero-section2__svg-container {
+  margin-top: 5rem;
+  /* display: none; */
+}
+
+.hero-section2__bold {
+  font-weight: bold;
+}
+
+.hero-section2__normal {
+  font-weight: normal;
+}
+
+@media (min-width: 768px) {
+  .hero-section2__row {
+    flex-direction: row;
+  }
+
+  .hero-section2__col {
+    width: 50%;
+  }
+
+  .hero-section2__svg-container {
+    display: block;
+  }
+  .hero-section2 {
+    height: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    
+    margin-top: 15rem;
+    margin-bottom: 15rem;
+  }
+}
