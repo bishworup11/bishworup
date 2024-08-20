@@ -16,13 +16,6 @@ const projects = [
   },
   {
     id: uuidv4(),
-    name: 'Blood DONATION SYSTEM',
-    desc:
-      'Main vision is to design a systematic blood donor management system and to validate the design using appropriate support. This is a PC-based application. It is implemented by Java Swing and the database is MySQL',
-    img: blood,
-  },
-  {
-    id: uuidv4(),
     name: ' Airbnb Front End',
     desc:
       'Design a frontend similar to Airbnb using HTML, CSS, and JavaScript, focusing on a clean, modern layout with interactive features. Ensure responsive design for various devices and screen sizes.',
@@ -34,6 +27,14 @@ const projects = [
     desc:
       'EcoSync, developed during Code Samurai 2024, streamlines garbage collection from homes to designated grounds, ensuring efficient and eco-friendly waste management.',
     img: eco,
+  },
+
+  {
+    id: uuidv4(),
+    name: 'Blood DONATION SYSTEM',
+    desc:
+      'Main vision is to design a systematic blood donor management system and to validate the design using appropriate support. This is a PC-based application. It is implemented by Java Swing and the database is MySQL',
+    img: blood,
   },
   
 ];
