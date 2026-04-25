@@ -1,34 +1,43 @@
 <template>
-  <section id="experience">
-    <div class="section-tag reveal">Career</div>
-    <h2 class="section-title reveal reveal-delay-1">Experience &amp; Education</h2>
-    <p class="section-sub reveal reveal-delay-2">Where I've worked and studied.</p>
-    <div class="exp-grid">
-      <div>
-        <h3 class="col-heading reveal">Work</h3>
-        <div class="timeline reveal">
-          <div v-for="job in work" :key="job.role" class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-date">{{ job.date }}</div>
-            <div class="timeline-role">{{ job.role }}</div>
-            <div class="timeline-company">{{ job.company }}</div>
-            <div class="timeline-loc">📍 {{ job.loc }}</div>
-            <div class="timeline-tech">
-              <span v-for="t in job.tags" :key="t" class="tag">{{ t }}</span>
-            </div>
-          </div>
-        </div>
+  <section id="experience" class="relative">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-24 md:py-32">
+      <div class="mb-14 reveal">
+        <span class="eyebrow">Career</span>
+        <h2 class="h2-display">Experience &amp; Education.</h2>
+        <p class="lede">Places I've worked, what I studied, and the tech I've shipped with.</p>
       </div>
-      <div>
-        <h3 class="col-heading reveal">Education</h3>
-        <div class="timeline reveal">
-          <div v-for="edu in education" :key="edu.role" class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-date">{{ edu.date }}</div>
-            <div class="timeline-role">{{ edu.role }}</div>
-            <div class="timeline-company">{{ edu.company }}</div>
-            <div class="timeline-loc">📍 {{ edu.loc }}</div>
+
+      <div class="grid lg:grid-cols-2 gap-x-16 gap-y-12">
+        <div v-for="(col, ci) in columns" :key="col.heading" class="reveal" :class="`reveal-delay-${ci + 1}`">
+          <div class="flex items-baseline gap-3 mb-8">
+            <div class="w-6 h-px bg-[var(--border-strong)]"></div>
+            <h3 class="text-[0.72rem] font-mono uppercase tracking-[0.2em] text-[var(--muted)]">
+              {{ col.heading }}
+            </h3>
           </div>
+
+          <ol class="relative border-l border-[var(--border)] ml-2 space-y-10">
+            <li v-for="item in col.items" :key="item.role" class="group relative pl-8">
+              <!-- Dot -->
+              <span class="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-[var(--bg)] border-2 border-[var(--border-strong)] group-hover:border-[var(--accent)] transition-colors"></span>
+
+              <time class="block text-[0.72rem] font-mono uppercase tracking-wider text-[var(--muted)] mb-1.5">
+                {{ item.date }}
+              </time>
+              <h4 class="font-head font-semibold text-lg text-[var(--text)] tracking-tight">{{ item.role }}</h4>
+              <div class="mt-1 flex items-center gap-2 text-[0.92rem] text-[var(--text-dim)]">
+                <span class="font-medium text-[var(--accent)]">{{ item.company }}</span>
+                <span class="text-[var(--muted)]">·</span>
+                <span>{{ item.loc }}</span>
+              </div>
+              <p v-if="item.desc" class="mt-3 text-[0.9rem] text-[var(--text-dim)] leading-relaxed max-w-xl">
+                {{ item.desc }}
+              </p>
+              <div v-if="item.tags" class="mt-4 flex flex-wrap gap-1.5">
+                <span v-for="t in item.tags" :key="t" class="pill">{{ t }}</span>
+              </div>
+            </li>
+          </ol>
         </div>
       </div>
     </div>
@@ -36,51 +45,45 @@
 </template>
 
 <script setup lang="ts">
-const work = [
-  { date: '02/2025 – Present', role: 'Software Engineer', company: 'AppsCode', loc: 'Dhaka, Bangladesh', tags: ['Vue', 'Pinia', 'Nuxt', 'Next.js', 'ConnectRPC'] },
-  { date: '09/2024 – 01/2025', role: 'Junior Software Engineer', company: 'AppifyLab', loc: 'Sylhet, Bangladesh', tags: ['React', 'Redux', 'Next.js', 'AdonisJS', 'MySQL'] },
+const columns = [
+  {
+    heading: 'Work',
+    items: [
+      {
+        date: 'Feb 2025 — Present',
+        role: 'Software Engineer',
+        company: 'AppsCode',
+        loc: 'Dhaka, Bangladesh',
+        desc: 'Building production web applications with Vue 3, Nuxt, and ConnectRPC. Developing Next.js integrations and maintaining cross-platform UI consistency at scale.',
+        tags: ['Vue 3', 'Pinia', 'Nuxt', 'Next.js', 'ConnectRPC'],
+      },
+      {
+        date: 'Sep 2024 — Jan 2025',
+        role: 'Junior Software Engineer',
+        company: 'AppifyLab',
+        loc: 'Sylhet, Bangladesh',
+        desc: 'Developed full-stack features with React, Redux Toolkit, and AdonisJS. Designed and maintained relational schemas with MySQL and Lucid ORM.',
+        tags: ['React', 'Redux', 'Next.js', 'AdonisJS', 'MySQL'],
+      },
+    ],
+  },
+  {
+    heading: 'Education',
+    items: [
+      {
+        date: 'Jan 2019 — Apr 2024',
+        role: 'B.Sc. in Computer Science & Engineering',
+        company: 'BSMRSTU',
+        loc: 'Gopalganj, Bangladesh',
+        desc: 'Focused on algorithms, data structures, and systems. Represented the university at ICPC Asia Regionals twice.',
+      },
+      {
+        date: 'Aug 2016 — Aug 2018',
+        role: 'Higher Secondary Certificate (HSC)',
+        company: 'MC College',
+        loc: 'Sylhet, Bangladesh',
+      },
+    ],
+  },
 ]
-const education = [
-  { date: '01/2019 – 04/2024', role: 'B.Sc. in Computer Science', company: 'BSMRSTU', loc: 'Gopalganj, Bangladesh' },
-  { date: '08/2016 – 08/2018', role: 'Higher Secondary Certificate (HSC)', company: 'MC College, Sylhet', loc: 'Sylhet, Bangladesh' },
-]
-
-onMounted(() => {
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible') })
-  }, { threshold: 0.2 })
-  document.querySelectorAll('.timeline').forEach(el => obs.observe(el))
-})
 </script>
-
-<style scoped>
-#experience { padding: 7rem 4rem; max-width: 1200px; margin: 0 auto; }
-.exp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 1rem; }
-.col-heading {
-  font-family: var(--font-mono); font-size: 0.75rem; color: var(--teal);
-  letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 2rem;
-}
-.timeline { position: relative; padding-left: 2rem; }
-.timeline::before {
-  content: ''; position: absolute; left: 0; top: 8px; bottom: 8px;
-  width: 2px; background: var(--border);
-  transform-origin: top; transform: scaleY(0);
-  transition: transform 1.5s var(--ease);
-}
-.timeline.visible::before { transform: scaleY(1); }
-.timeline-item { position: relative; margin-bottom: 3rem; }
-.timeline-dot {
-  position: absolute; left: -2.4rem; top: 0.35rem;
-  width: 12px; height: 12px; border-radius: 50%;
-  background: linear-gradient(135deg, var(--purple), var(--teal));
-  box-shadow: 0 0 0 4px var(--bg), 0 0 0 6px var(--purple);
-  transition: box-shadow 0.3s;
-}
-.timeline-item:hover .timeline-dot { box-shadow: 0 0 0 4px var(--bg), 0 0 0 8px var(--purple), 0 0 20px var(--purple); }
-.timeline-date { font-family: var(--font-mono); font-size: 0.75rem; color: var(--teal); margin-bottom: 0.35rem; }
-.timeline-role { font-family: var(--font-head); font-size: 1.1rem; font-weight: 600; }
-.timeline-company { color: var(--purple); font-weight: 500; font-size: 0.95rem; }
-.timeline-loc { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.5rem; }
-.timeline-tech { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem; }
-@media (max-width: 768px) { #experience { padding: 4rem 1.5rem; } .exp-grid { grid-template-columns: 1fr; gap: 2rem; } }
-</style>

@@ -1,31 +1,66 @@
 <template>
-  <section id="projects">
-    <div class="section-tag reveal">Work</div>
-    <h2 class="section-title reveal reveal-delay-1">Featured Projects</h2>
-    <p class="section-sub reveal reveal-delay-2">Things I've built that I'm proud of.</p>
-    <div class="projects-grid">
-      <div v-for="(p, i) in projects" :key="p.title"
-        class="project-card reveal"
-        :class="`reveal-delay-${i + 1}`">
-        <div class="project-thumb" :style="{ background: p.bg }">
-          <div class="project-thumb-inner">
-            <div class="project-thumb-icon">{{ p.icon }}</div>
-            <span>{{ p.thumbLabel }}</span>
-          </div>
+  <section id="projects" class="relative">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-24 md:py-32">
+      <!-- Heading -->
+      <div class="flex items-end justify-between flex-wrap gap-6 mb-14">
+        <div class="reveal">
+          <span class="eyebrow">Selected Work</span>
+          <h2 class="h2-display">Projects &amp; builds.</h2>
+          <p class="lede">A selection of things I've built — from full-stack products to systems-level experiments.</p>
         </div>
-        <div class="project-body">
-          <div class="project-title">{{ p.title }}</div>
-          <div class="project-desc">{{ p.desc }}</div>
-          <div class="project-tags">
-            <span v-for="t in p.tags" :key="t" class="tag">{{ t }}</span>
+        <a
+          href="https://github.com/bishworup11"
+          target="_blank" rel="noopener"
+          class="hidden sm:inline-flex items-center gap-2 text-[0.82rem] font-mono text-[var(--text-dim)] hover:text-[var(--accent)] transition-colors reveal reveal-delay-2"
+        >
+          View all on GitHub
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+        </a>
+      </div>
+
+      <!-- Grid -->
+      <div class="grid md:grid-cols-2 gap-5">
+        <article
+          v-for="(p, i) in projects" :key="p.title"
+          class="group relative overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface)] hover:border-[var(--border-strong)] transition-all duration-300 reveal"
+          :class="`reveal-delay-${(i % 4) + 1}`"
+        >
+          <!-- Thumb -->
+          <div class="relative h-52 overflow-hidden" :style="{ background: p.bg }">
+            <!-- Grid overlay -->
+            <div class="absolute inset-0 opacity-20 grid-lines"></div>
+            <!-- Icon -->
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="text-7xl opacity-30 group-hover:scale-110 group-hover:opacity-40 transition-all duration-500" style="filter: saturate(1.2)">{{ p.icon }}</div>
+            </div>
+            <!-- Type badge -->
+            <div class="absolute top-4 left-4 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-[0.7rem] font-mono text-white/80">
+              <span class="w-1.5 h-1.5 rounded-full" :style="{ background: p.dot }"></span>
+              {{ p.type }}
+            </div>
           </div>
-          <div class="project-links">
-            <a :href="p.github" target="_blank" rel="noopener" class="project-link">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              GitHub
-            </a>
+
+          <!-- Body -->
+          <div class="p-6">
+            <div class="flex items-start justify-between gap-4">
+              <h3 class="font-head font-semibold text-lg tracking-tight text-[var(--text)] group-hover:text-[var(--accent)] transition-colors">{{ p.title }}</h3>
+              <div class="shrink-0 flex items-center gap-2">
+                <a :href="p.github" target="_blank" rel="noopener" aria-label="View source on GitHub"
+                   class="w-9 h-9 rounded-full border border-[var(--border)] flex items-center justify-center text-[var(--text-dim)] hover:text-[var(--accent)] hover:border-[var(--accent)] hover:bg-[var(--accent-soft)] hover:-translate-y-0.5 transition-all">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.44 9.8 8.21 11.39.6.1.82-.26.82-.58 0-.28-.01-1.23-.02-2.24-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.08-.72.08-.72 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.94 0-1.31.47-2.38 1.23-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23A11.5 11.5 0 0 1 12 5.8c1.02 0 2.04.14 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.93.43.37.81 1.1.81 2.22 0 1.6-.01 2.9-.01 3.29 0 .32.22.7.82.58C20.56 21.8 24 17.31 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                </a>
+                <a v-if="p.demo" :href="p.demo" target="_blank" rel="noopener" aria-label="Open live demo"
+                   class="w-9 h-9 rounded-full border border-[var(--border)] flex items-center justify-center text-[var(--text-dim)] hover:text-[var(--accent)] hover:border-[var(--accent)] hover:bg-[var(--accent-soft)] hover:-translate-y-0.5 transition-all">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+                </a>
+              </div>
+            </div>
+            <p class="mt-2 text-[0.92rem] leading-relaxed text-[var(--text-dim)]">{{ p.desc }}</p>
+            <div class="mt-5 flex flex-wrap gap-1.5">
+              <span v-for="t in p.tags" :key="t" class="pill">{{ t }}</span>
+            </div>
           </div>
-        </div>
+        </article>
       </div>
     </div>
   </section>
@@ -34,76 +69,86 @@
 <script setup lang="ts">
 const projects = [
   {
+    title: 'Rick & Morty Explorer',
+    type: 'SPA · Live',
+    dot: '#42B883',
+    icon: '◍',
+    bg: 'radial-gradient(circle at 35% 30%, #0a3530 0%, #061614 70%)',
+    desc: 'Vue 3 + TypeScript SPA consuming the Rick & Morty REST API. Vuex state, Vue Router with auth guards, token-based login, and Naive UI components.',
+    tags: ['Vue 3', 'TypeScript', 'Vuex', 'Vue Router', 'Naive UI', 'Vite'],
+    github: 'https://github.com/bishworup11/rick-and-morty-api-vue-js',
+    demo: 'https://rick-and-morty-api-vue-js.vercel.app',
+  },
+  {
+    title: 'Chunked S3 Uploader',
+    type: 'Backend · Systems',
+    dot: '#FF9900',
+    icon: '◔',
+    bg: 'radial-gradient(circle at 60% 40%, #2a1a05 0%, #150a02 70%)',
+    desc: 'Multipart upload service that splits large files into parallel chunks via presigned URLs. Node.js backend issues credentials, Vue frontend streams chunks directly to MinIO (S3-compatible).',
+    tags: ['Node.js', 'Vue.js', 'MinIO', 'S3', 'Presigned URLs', 'Docker'],
+    github: 'https://github.com/bishworup11/multipart-file-upload-s3',
+  },
+  {
     title: 'Social Media Platform',
-    thumbLabel: 'Social Media App',
-    icon: '📱',
-    bg: 'linear-gradient(135deg,#1a0a2e,#0a1a2e)',
-    desc: 'Full-stack social networking app with real-time feed, user authentication, and responsive UI. Built with React on the frontend and AdonisJS REST API on the backend.',
+    type: 'Full-stack',
+    dot: '#9333EA',
+    icon: '◐',
+    bg: 'radial-gradient(circle at 30% 20%, #1e1235 0%, #0a0a14 70%)',
+    desc: 'Social networking app with real-time feed, user auth, and a responsive UI. React on the client, AdonisJS REST API on the server.',
     tags: ['React', 'Redux Toolkit', 'AdonisJS', 'MySQL', 'Lucid ORM'],
     github: 'https://github.com/bishworup11',
   },
   {
     title: 'React Authorization',
-    thumbLabel: 'Auth System',
-    icon: '🔐',
-    bg: 'linear-gradient(135deg,#0a2e1a,#0a2e2a)',
-    desc: 'A clean, production-ready authorization system with role-based access control, JWT token handling, and integration with a dummy API for rapid prototyping.',
-    tags: ['React', 'Tailwind CSS', 'JWT', 'Dummy API'],
+    type: 'Frontend',
+    dot: '#06B6D4',
+    icon: '◎',
+    bg: 'radial-gradient(circle at 70% 30%, #0e2a2a 0%, #081015 70%)',
+    desc: 'Production-ready auth system with role-based access control, JWT token handling, and a drop-in API contract for quick prototyping.',
+    tags: ['React', 'Tailwind CSS', 'JWT', 'RBAC'],
     github: 'https://github.com/bishworup11',
   },
   {
+    title: 'Quiz App',
+    type: 'SPA · Live',
+    dot: '#42B883',
+    icon: '◑',
+    bg: 'radial-gradient(circle at 50% 30%, #0e2440 0%, #050a18 70%)',
+    desc: 'Interactive quiz app built with the Vue 3 Composition API. Animated question transitions, dynamic score tracking, and Vue Router-driven flow.',
+    tags: ['Vue 3', 'TypeScript', 'Composition API', 'Vue Router', 'Vite'],
+    github: 'https://github.com/bishworup11/QuizApp',
+    demo: 'https://quiz-app-bishworup-molliks-projects.vercel.app',
+  },
+  {
+    title: 'Bangla Fake News ML',
+    type: 'ML · NLP',
+    dot: '#FFD43B',
+    icon: '◊',
+    bg: 'radial-gradient(circle at 30% 60%, #2a2010 0%, #15100a 70%)',
+    desc: 'Machine learning pipeline for detecting fake news in Bangla. Trained classifiers on a curated 8K-sample corpus (7K authentic, 1K fake) — feature extraction and supervised learning end-to-end.',
+    tags: ['Python', 'Jupyter', 'NLP', 'scikit-learn', 'Bangla'],
+    github: 'https://github.com/bishworup11/Bangla_Fake_News_ML',
+  },
+  {
     title: 'Blood Donation Management',
-    thumbLabel: 'Management System',
-    icon: '🩸',
-    bg: 'linear-gradient(135deg,#2e1a0a,#1a0a0a)',
-    desc: 'Desktop application for managing blood donation records, donor registration, and hospital requests. Features a full GUI built with Java Swing and MySQL persistence.',
-    tags: ['Java', 'Java Swing', 'MySQL', 'XAMPP'],
+    type: 'Desktop',
+    dot: '#F05032',
+    icon: '◉',
+    bg: 'radial-gradient(circle at 40% 60%, #2a0f0f 0%, #140808 70%)',
+    desc: 'Desktop app for managing donor records, blood stock, and hospital requests. Full GUI built in Java Swing with MySQL persistence.',
+    tags: ['Java', 'Swing', 'MySQL', 'JDBC'],
     github: 'https://github.com/bishworup11',
   },
   {
     title: 'Duck Hunting',
-    thumbLabel: '2D Game · C / IGraphics',
-    icon: '🦆',
-    bg: 'linear-gradient(135deg,#0a1a2e,#1a2e0a)',
-    desc: 'Classic 2D duck hunting game built in C using the IGraphics library. Features animated sprites, collision detection, scoring, and multiple difficulty levels.',
-    tags: ['C', 'IGraphics', 'Visual Studio'],
-    github: 'https://github.com/bishworup11',
+    type: 'Game',
+    dot: '#FCC624',
+    icon: '◈',
+    bg: 'radial-gradient(circle at 60% 40%, #12221a 0%, #08140d 70%)',
+    desc: 'Classic 2D duck-hunting game written in C using the IGraphics library — animated sprites, collision detection, and difficulty scaling.',
+    tags: ['C', 'IGraphics', 'Game Loop'],
+    github: 'https://github.com/bishworup11/Duck-Hunting',
   },
 ]
 </script>
-
-<style scoped>
-#projects { padding: 7rem 4rem; max-width: 1200px; margin: 0 auto; }
-.projects-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.5rem;
-}
-.project-card {
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: var(--radius); overflow: hidden;
-  transition: transform 0.25s var(--ease), border-color 0.2s, box-shadow 0.25s;
-  display: flex; flex-direction: column;
-}
-.project-card:hover { transform: translateY(-6px); border-color: var(--blue); box-shadow: 0 20px 50px var(--blue-glow); }
-.project-thumb {
-  height: 180px; display: flex; align-items: center; justify-content: center;
-  font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted);
-}
-.project-thumb-inner {
-  display: flex; align-items: center; justify-content: center;
-  flex-direction: column; gap: 0.5rem; width: 100%; height: 100%;
-  transition: transform 0.4s var(--ease);
-}
-.project-card:hover .project-thumb-inner { transform: scale(1.05); }
-.project-thumb-icon { font-size: 3rem; opacity: 0.5; }
-.project-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
-.project-title { font-family: var(--font-head); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; }
-.project-desc { font-size: 0.875rem; color: var(--muted); line-height: 1.6; margin-bottom: 1rem; flex: 1; }
-.project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.25rem; }
-.project-links { display: flex; gap: 0.75rem; }
-.project-link {
-  font-size: 0.8rem; font-weight: 500; display: flex; align-items: center; gap: 0.35rem;
-  color: var(--muted); transition: color 0.2s;
-}
-.project-link:hover { color: var(--purple); }
-@media (max-width: 768px) { #projects { padding: 4rem 1.5rem; } }
-</style>
