@@ -123,7 +123,12 @@
 <script setup lang="ts">
 import { h } from 'vue'
 
-useHead({ title: 'Bishworup Mollik — CV', htmlAttrs: { 'data-theme': 'light' } })
+useSeoMeta({
+  title: 'CV — Bishworup Mollik',
+  description: 'Curriculum Vitae of Bishworup Mollik — Software Engineer at AppsCode. Vue 3, Nuxt, full-stack JavaScript, ICPC regionalist.',
+  robots: 'noindex, follow',
+})
+useHead({ htmlAttrs: { 'data-theme': 'light' } })
 
 const downloadPdf = () => {
   if (typeof window !== 'undefined') window.print()

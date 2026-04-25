@@ -37,10 +37,57 @@
 </template>
 
 <script setup lang="ts">
+const { siteUrl } = useRuntimeConfig().public
+const title = 'Bishworup Mollik — Software Engineer | Vue, Nuxt, Full-Stack'
+const description = 'Software Engineer at AppsCode specializing in Vue 3, Nuxt, and full-stack JavaScript. ICPC regionalist, Codeforces Specialist, 1500+ problems solved.'
+
+useSeoMeta({
+  title,
+  description,
+  ogTitle: title,
+  ogDescription: description,
+  ogUrl: siteUrl,
+  ogType: 'website',
+  ogImage: `${siteUrl}/og-image.png`,
+  twitterCard: 'summary_large_image',
+  twitterTitle: title,
+  twitterDescription: description,
+  twitterImage: `${siteUrl}/og-image.png`,
+})
+
 useHead({
-  title: 'Bishworup Mollik — Software Engineer',
-  meta: [{ name: 'description', content: 'Software Engineer specializing in Vue, Nuxt, and full-stack JavaScript. Currently building at AppsCode.' }],
   htmlAttrs: { 'data-theme': 'dark' },
+  link: [{ rel: 'canonical', href: siteUrl }],
+  script: [{
+    type: 'application/ld+json',
+    innerHTML: JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: 'Bishworup Mollik',
+      url: siteUrl,
+      image: `${siteUrl}/og-image.png`,
+      jobTitle: 'Software Engineer',
+      email: 'mailto:bishworupmollik@gmail.com',
+      worksFor: { '@type': 'Organization', name: 'AppsCode' },
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Sunamganj',
+        addressRegion: 'Sylhet',
+        addressCountry: 'BD',
+      },
+      alumniOf: {
+        '@type': 'CollegeOrUniversity',
+        name: 'Bangabandhu Sheikh Mujibur Rahman Science and Technology University',
+      },
+      knowsAbout: ['Vue.js', 'Nuxt', 'TypeScript', 'JavaScript', 'Node.js', 'Pinia', 'React', 'Next.js', 'Tailwind CSS', 'Competitive Programming'],
+      sameAs: [
+        'https://github.com/bishworup11',
+        'https://www.linkedin.com/in/bishworup-mollik/',
+        'https://codeforces.com/profile/bishworup11',
+        'https://leetcode.com/bishworup11',
+      ],
+    }),
+  }],
 })
 
 const loaded = ref(false)
