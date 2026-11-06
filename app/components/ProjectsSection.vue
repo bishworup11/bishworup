@@ -1,75 +1,108 @@
 <template>
   <section id="projects" class="relative">
     <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-24 md:py-32">
-      <!-- Heading -->
-      <div class="flex items-end justify-between flex-wrap gap-6 mb-14">
-        <div class="reveal">
-          <span class="eyebrow">Selected Work</span>
-          <h2 class="h2-display">Projects &amp; builds.</h2>
-          <p class="lede">A selection of things I've built — from full-stack products to systems-level experiments.</p>
-        </div>
-        <a
-          href="https://github.com/bishworup11"
-          target="_blank" rel="noopener"
-          class="hidden sm:inline-flex items-center gap-2 text-[0.82rem] font-mono text-[var(--text-dim)] hover:text-[var(--accent)] transition-colors reveal reveal-delay-2"
-        >
-          View all on GitHub
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
-        </a>
-      </div>
+      <SectionHeading
+        num="02"
+        eyebrow="Projects"
+        title="Things I've built on my own."
+        lede="Side projects outside work, from live single-page apps to a systems-level upload service."
+      >
+        <template #aside>
+          <a
+            href="https://github.com/bishworup11" target="_blank" rel="noopener"
+            class="inline-flex items-center gap-2 text-[0.82rem] font-mono text-[var(--text-dim)] hover:text-[var(--accent)] transition-colors"
+          >
+            View all on GitHub
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+          </a>
+        </template>
+      </SectionHeading>
 
-      <!-- Grid -->
+      <!-- Featured -->
       <div class="grid md:grid-cols-2 gap-5">
         <article
-          v-for="(p, i) in projects" :key="p.title"
+          v-for="(p, i) in featured" :key="p.title"
           class="group relative overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface)] hover:border-[var(--border-strong)] transition-all duration-300 reveal"
-          :class="`reveal-delay-${(i % 4) + 1}`"
+          :class="`reveal-delay-${i + 1}`"
         >
-          <!-- Thumb -->
-          <div class="relative h-52 overflow-hidden" :style="{ background: p.bg }">
-            <!-- Grid overlay -->
+          <div class="relative h-56 overflow-hidden" :style="{ background: p.bg }">
             <div class="absolute inset-0 opacity-20 grid-lines"></div>
-            <!-- Icon -->
             <div class="absolute inset-0 flex items-center justify-center">
-              <div class="text-7xl opacity-30 group-hover:scale-110 group-hover:opacity-40 transition-all duration-500" style="filter: saturate(1.2)">{{ p.icon }}</div>
+              <div class="text-8xl opacity-30 group-hover:scale-110 group-hover:opacity-45 transition-all duration-500">{{ p.icon }}</div>
             </div>
-            <!-- Type badge -->
             <div class="absolute top-4 left-4 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-[0.7rem] font-mono text-white/80">
               <span class="w-1.5 h-1.5 rounded-full" :style="{ background: p.dot }"></span>
               {{ p.type }}
             </div>
+            <div class="absolute top-4 right-4 px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-[0.65rem] font-mono uppercase tracking-wider text-white/70">
+              Featured
+            </div>
           </div>
 
-          <!-- Body -->
-          <div class="p-6">
+          <div class="p-6 sm:p-7">
             <div class="flex items-start justify-between gap-4">
-              <h3 class="font-head font-semibold text-lg tracking-tight text-[var(--text)] group-hover:text-[var(--accent)] transition-colors">{{ p.title }}</h3>
+              <h3 class="font-head font-semibold text-xl tracking-tight text-[var(--text)] group-hover:text-[var(--accent)] transition-colors">{{ p.title }}</h3>
               <div class="shrink-0 flex items-center gap-2">
-                <a :href="p.github" target="_blank" rel="noopener" aria-label="View source on GitHub"
-                   class="w-9 h-9 rounded-full border border-[var(--border)] flex items-center justify-center text-[var(--text-dim)] hover:text-[var(--accent)] hover:border-[var(--accent)] hover:bg-[var(--accent-soft)] hover:-translate-y-0.5 transition-all">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.44 9.8 8.21 11.39.6.1.82-.26.82-.58 0-.28-.01-1.23-.02-2.24-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.08-.72.08-.72 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.94 0-1.31.47-2.38 1.23-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23A11.5 11.5 0 0 1 12 5.8c1.02 0 2.04.14 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.93.43.37.81 1.1.81 2.22 0 1.6-.01 2.9-.01 3.29 0 .32.22.7.82.58C20.56 21.8 24 17.31 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                </a>
-                <a v-if="p.demo" :href="p.demo" target="_blank" rel="noopener" aria-label="Open live demo"
-                   class="w-9 h-9 rounded-full border border-[var(--border)] flex items-center justify-center text-[var(--text-dim)] hover:text-[var(--accent)] hover:border-[var(--accent)] hover:bg-[var(--accent-soft)] hover:-translate-y-0.5 transition-all">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
-                </a>
+                <a :href="p.github" target="_blank" rel="noopener" aria-label="View source on GitHub" class="w-9 h-9 rounded-full border border-[var(--border)] flex items-center justify-center text-[var(--text-dim)] hover:text-[var(--accent)] hover:border-[var(--accent)] hover:bg-[var(--accent-soft)] hover:-translate-y-0.5 transition-all"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.44 9.8 8.21 11.39.6.1.82-.26.82-.58 0-.28-.01-1.23-.02-2.24-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.08-.72.08-.72 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.94 0-1.31.47-2.38 1.23-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23A11.5 11.5 0 0 1 12 5.8c1.02 0 2.04.14 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.93.43.37.81 1.1.81 2.22 0 1.6-.01 2.9-.01 3.29 0 .32.22.7.82.58C20.56 21.8 24 17.31 24 12c0-6.63-5.37-12-12-12z"/></svg></a>
+                <a v-if="p.demo" :href="p.demo" target="_blank" rel="noopener" aria-label="Open live demo" class="w-9 h-9 rounded-full border border-[var(--border)] flex items-center justify-center text-[var(--text-dim)] hover:text-[var(--accent)] hover:border-[var(--accent)] hover:bg-[var(--accent-soft)] hover:-translate-y-0.5 transition-all"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></a>
               </div>
             </div>
-            <p class="mt-2 text-[0.92rem] leading-relaxed text-[var(--text-dim)]">{{ p.desc }}</p>
+            <p class="mt-3 text-[0.94rem] leading-relaxed text-[var(--text-dim)]">{{ p.desc }}</p>
             <div class="mt-5 flex flex-wrap gap-1.5">
               <span v-for="t in p.tags" :key="t" class="pill">{{ t }}</span>
             </div>
           </div>
         </article>
       </div>
+
+      <!-- Archive -->
+      <div class="mt-16 reveal">
+        <div class="flex items-baseline gap-3 mb-4">
+          <div class="w-6 h-px bg-[var(--border-strong)]"></div>
+          <h3 class="text-[0.72rem] font-mono uppercase tracking-[0.2em] text-[var(--muted)]">More builds</h3>
+        </div>
+
+        <ul class="border-t border-[var(--border)]">
+          <li v-for="p in archive" :key="p.title" class="border-b border-[var(--border)]">
+            <a
+              :href="p.demo || p.github" target="_blank" rel="noopener"
+              class="group grid grid-cols-12 gap-x-6 gap-y-2 items-baseline py-5 px-2 -mx-2 rounded-lg hover:bg-[var(--surface)] transition-colors"
+            >
+              <div class="col-span-12 md:col-span-4 flex items-center gap-3">
+                <span class="w-1.5 h-1.5 rounded-full shrink-0" :style="{ background: p.dot }"></span>
+                <span class="font-head font-semibold text-[1.02rem] text-[var(--text)] group-hover:text-[var(--accent)] transition-colors">{{ p.title }}</span>
+              </div>
+              <p class="col-span-12 md:col-span-5 text-[0.88rem] text-[var(--text-dim)] leading-relaxed pl-[18px] md:pl-0">{{ p.desc }}</p>
+              <div class="hidden md:flex col-span-3 items-center justify-end gap-3">
+                <span class="text-[0.7rem] font-mono uppercase tracking-wider text-[var(--muted)] text-right">{{ p.tags.slice(0, 3).join(' · ') }}</span>
+                <span class="text-[var(--muted)] group-hover:text-[var(--accent)] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></span>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-const projects = [
+interface Project {
+  title: string
+  type: string
+  dot: string
+  icon: string
+  bg: string
+  desc: string
+  tags: string[]
+  github: string
+  demo?: string
+  featured?: boolean
+}
+
+const projects: Project[] = [
   {
     title: 'Rick & Morty Explorer',
+    featured: true,
     type: 'SPA · Live',
     dot: '#42B883',
     icon: '◍',
@@ -81,6 +114,7 @@ const projects = [
   },
   {
     title: 'Chunked S3 Uploader',
+    featured: true,
     type: 'Backend · Systems',
     dot: '#FF9900',
     icon: '◔',
@@ -151,4 +185,7 @@ const projects = [
     github: 'https://github.com/bishworup11/Duck-Hunting',
   },
 ]
+
+const featured = projects.filter(p => p.featured)
+const archive = projects.filter(p => !p.featured)
 </script>

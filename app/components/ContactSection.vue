@@ -7,7 +7,7 @@
         <div class="absolute inset-0 opacity-[0.35] grid-lines [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,black_20%,transparent_80%)] pointer-events-none"></div>
 
         <div class="relative text-center px-6 sm:px-10 py-20 md:py-24">
-          <span class="eyebrow !mb-4 justify-center">Contact</span>
+          <span class="eyebrow !mb-4 justify-center">05 · Contact</span>
           <h2 class="font-display text-[clamp(2rem,5vw,3.5rem)] leading-[1.05] tracking-tight text-[var(--text)]">
             Let's build something<br />
             <span class="gradient-text">worth shipping.</span>

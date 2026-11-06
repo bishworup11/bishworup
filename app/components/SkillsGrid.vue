@@ -1,41 +1,19 @@
 <template>
-  <section id="skills" class="relative">
-    <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-24 md:py-32">
-      <!-- Heading -->
-      <div class="mb-14 reveal">
-        <span class="eyebrow">Tech Stack</span>
-        <h2 class="h2-display">Tools I reach for daily.</h2>
-        <p class="lede">
-          A curated set of languages, frameworks, and tools I've used across production codebases and personal projects.
-        </p>
-      </div>
-
-      <!-- Grouped skills -->
-      <div class="space-y-10">
-        <div v-for="(group, gi) in groups" :key="group.title" class="reveal" :class="`reveal-delay-${gi + 1}`">
-          <div class="flex items-baseline gap-3 mb-4">
-            <div class="w-6 h-px bg-[var(--border-strong)]"></div>
-            <h3 class="text-[0.72rem] font-mono uppercase tracking-[0.2em] text-[var(--muted)]">
-              {{ group.title }}
-            </h3>
-          </div>
-          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
-            <div
-              v-for="skill in group.items" :key="skill.name"
-              class="skill group relative rounded-xl border border-[var(--border)] bg-[var(--surface)] px-4 py-5 flex flex-col items-center gap-3 cursor-default transition-all duration-300 hover:-translate-y-0.5 hover:bg-[var(--surface-hover)]"
-              :style="`--brand:${skill.color}`"
-            >
-              <!-- Subtle brand accent on hover -->
-              <div class="absolute inset-x-3 top-0 h-px opacity-0 group-hover:opacity-100 transition-opacity" style="background: linear-gradient(90deg, transparent, var(--brand), transparent)"></div>
-
-              <div class="w-10 h-10 flex items-center justify-center transition-transform duration-300 group-hover:scale-110" v-html="skill.svg"></div>
-              <span class="text-[0.8rem] font-medium text-[var(--text-dim)] group-hover:text-[var(--text)] transition-colors">{{ skill.name }}</span>
-            </div>
-          </div>
+  <div class="space-y-8">
+    <div v-for="group in groups" :key="group.title">
+      <h3 class="mb-3 text-[0.7rem] font-mono uppercase tracking-[0.2em] text-[var(--muted)]">{{ group.title }}</h3>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+        <div
+          v-for="skill in group.items" :key="skill.name"
+          class="skill group flex items-center gap-3 rounded-xl border border-[var(--border)] bg-[var(--surface)] px-3 py-2.5 cursor-default transition-all duration-300 hover:-translate-y-0.5 hover:bg-[var(--surface-hover)]"
+          :style="{ '--brand': skill.color }"
+        >
+          <span class="skill-icon w-6 h-6 shrink-0 flex items-center justify-center transition-transform duration-300 group-hover:scale-110" v-html="skill.svg"></span>
+          <span class="text-[0.84rem] font-medium text-[var(--text-dim)] group-hover:text-[var(--text)] transition-colors truncate">{{ skill.name }}</span>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -151,14 +129,9 @@ function svgPostman() {
   return `<svg viewBox="0 0 32 32" width="40" height="40"><circle cx="16" cy="16" r="13" fill="#FF6C37"/><path d="M22 11c-1.5-1.5-4-1.5-5.5 0l-5 5c-.3.3-.3.8 0 1.1l2.4 2.4c.3.3.8.3 1.1 0l5-5c1.5-1.5 1.5-4 0-5.5zm-3.5 6.5l-1.5-1.5 3.5-3.5c.6-.6 1.5-.6 2.1 0s.6 1.5 0 2.1L19 18l-.5-.5z" fill="#fff"/></svg>`
 }
 
-onMounted(() => {
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible') })
-  }, { threshold: 0.15 })
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el))
-})
 </script>
 
 <style scoped>
+.skill-icon :deep(svg) { width: 24px; height: 24px; }
 .skill:hover { border-color: color-mix(in srgb, var(--brand) 50%, var(--border)); }
 </style>

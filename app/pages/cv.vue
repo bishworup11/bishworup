@@ -153,7 +153,7 @@ const experience = [
     loc: 'Dhaka, Bangladesh',
     date: 'Feb 2025 — Present',
     bullets: [
-      '<strong>Cloud UI</strong> (Jul 2025 — Present): main contributor to AppsCode\'s self-service cloud console, built with <strong>Vue 3, TypeScript, Vite, Pinia, TanStack Query,</strong> and <strong>ConnectRPC/Protobuf</strong>',
+      '<strong>AppsCode Cloud Platform</strong> (Jul 2025 — Present): main contributor to AppsCode\'s self-service cloud console, built with <strong>Vue 3, TypeScript, Vite, Pinia, TanStack Query,</strong> and <strong>ConnectRPC/Protobuf</strong>',
       'Built the VM lifecycle (modular create flow, resize, volumes, snapshots, KubeStash backups) and Kubernetes cluster creation and node management',
       'Built end-to-end networking: VPCs, subnets, route tables, ACLs, security groups, elastic IPs, DNS, load balancers, site-to-site VPN, and an interactive VPC topology view',
       'Built admin tooling for regions, provider-neutral datacenters, flavors, and load-balancer clusters; unified status polling and moved the app onto the shared design system',

@@ -22,11 +22,10 @@
 
     <main>
       <HeroSection />
-      <AboutSection />
-      <SkillsSection />
-      <ProjectsSection />
       <ExperienceSection />
-      <AchievementsSection />
+      <ProjectsSection />
+      <AboutSection />
+      <BackgroundSection />
       <ContactSection />
     </main>
 
