@@ -153,8 +153,11 @@ const experience = [
     loc: 'Dhaka, Bangladesh',
     date: 'Feb 2025 — Present',
     bullets: [
-      'Building production web applications with <strong>Vue 3, Pinia, Nuxt,</strong> and <strong>ConnectRPC</strong>',
-      'Developing Next.js integrations and maintaining cross-platform UI consistency at scale',
+      '<strong>Cloud UI</strong> (Jul 2025 — Present): main contributor to AppsCode\'s self-service cloud console, built with <strong>Vue 3, TypeScript, Vite, Pinia, TanStack Query,</strong> and <strong>ConnectRPC/Protobuf</strong>',
+      'Built the VM lifecycle (modular create flow, resize, volumes, snapshots, KubeStash backups) and Kubernetes cluster creation and node management',
+      'Built end-to-end networking: VPCs, subnets, route tables, ACLs, security groups, elastic IPs, DNS, load balancers, site-to-site VPN, and an interactive VPC topology view',
+      'Built admin tooling for regions, provider-neutral datacenters, flavors, and load-balancer clusters; unified status polling and moved the app onto the shared design system',
+      '<strong>Platform UI</strong> (Mar — Jun 2025): rebuilt profiles, organizations, teams, and settings in <strong>Nuxt 3</strong>, and fixed SSR hydration and site-administration flows',
     ],
   },
   {
@@ -170,16 +173,16 @@ const experience = [
 ]
 
 const education = [
-  { degree: 'B.Sc. in Computer Science & Engineering', school: 'Bangabandhu Sheikh Mujibur Rahman Science and Technology University', date: 'Jan 2019 — Apr 2024' },
+  { degree: 'B.Sc. in Computer Science & Engineering', school: 'Gopalganj Science and Technology University (GSTU)', date: 'Jan 2019 — Apr 2024' },
   { degree: 'Higher Secondary Certificate (HSC)', school: 'MC College, Sylhet', date: 'Aug 2016 — Aug 2018' },
 ]
 
 const skills = [
   { label: 'Languages', value: 'C, C++, Java, JavaScript, TypeScript, Python, HTML, CSS' },
-  { label: 'Frontend', value: 'Vue 3, Nuxt, Pinia, React, Next.js, Redux Toolkit, Tailwind CSS' },
-  { label: 'Backend', value: 'Node.js, AdonisJS, ConnectRPC, Lucid ORM, REST APIs' },
+  { label: 'Frontend', value: 'Vue 3, Nuxt, Pinia, TanStack Query, Vite, React, Next.js, Redux Toolkit, Tailwind CSS' },
+  { label: 'Backend', value: 'Node.js, AdonisJS, ConnectRPC, Protobuf, Lucid ORM, REST APIs' },
   { label: 'Databases', value: 'PostgreSQL, MySQL' },
-  { label: 'Tools', value: 'Git, GitHub, Docker, Linux, Postman, LaTeX' },
+  { label: 'Tools', value: 'Git, GitHub, Docker, Kubernetes, Cypress, Linux, Postman, LaTeX' },
 ]
 
 const projects = [

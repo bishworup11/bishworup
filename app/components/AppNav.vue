@@ -10,9 +10,7 @@
     <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 flex items-center justify-between">
       <!-- Logo -->
       <NuxtLink to="/" class="group flex items-center gap-2.5">
-        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-[var(--accent)] to-[var(--accent-2)] flex items-center justify-center text-[var(--bg)] font-bold text-sm tracking-tight">
-          BM
-        </div>
+        <AppLogo :size="36" :delay="1.6" />
         <span class="hidden sm:inline font-head font-medium text-sm tracking-tight text-[var(--text)] group-hover:text-[var(--accent)] transition-colors">
           Bishworup Mollik
         </span>

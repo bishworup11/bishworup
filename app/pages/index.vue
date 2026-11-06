@@ -9,10 +9,8 @@
         leave-to-class="opacity-0"
       >
         <div v-if="!loaded" class="fixed inset-0 z-[10000] flex items-center justify-center" style="background: var(--bg)">
-          <div class="flex flex-col items-center gap-3">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--accent)] to-[var(--accent-2)] flex items-center justify-center text-[var(--bg)] font-bold tracking-tight" style="animation: pulse 0.9s ease-in-out infinite alternate">
-              BM
-            </div>
+          <div class="flex flex-col items-center gap-4">
+            <AppLogo :size="96" />
             <div class="text-[0.7rem] font-mono uppercase tracking-[0.3em] text-[var(--muted)]">Loading</div>
           </div>
         </div>
@@ -77,7 +75,8 @@ useHead({
       },
       alumniOf: {
         '@type': 'CollegeOrUniversity',
-        name: 'Bangabandhu Sheikh Mujibur Rahman Science and Technology University',
+        name: 'Gopalganj Science and Technology University',
+        alternateName: ['GSTU', 'Bangabandhu Sheikh Mujibur Rahman Science and Technology University', 'BSMRSTU'],
       },
       knowsAbout: ['Vue.js', 'Nuxt', 'TypeScript', 'JavaScript', 'Node.js', 'Pinia', 'React', 'Next.js', 'Tailwind CSS', 'Competitive Programming'],
       sameAs: [
@@ -93,7 +92,7 @@ useHead({
 const loaded = ref(false)
 
 onMounted(() => {
-  setTimeout(() => { loaded.value = true }, 700)
+  setTimeout(() => { loaded.value = true }, 1900)
 
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {

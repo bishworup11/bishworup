@@ -2,7 +2,7 @@
   <footer class="border-t border-[var(--border)]">
     <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
       <div class="flex items-center gap-3 text-[0.82rem] text-[var(--muted)]">
-        <div class="w-6 h-6 rounded-md bg-gradient-to-br from-[var(--accent)] to-[var(--accent-2)] flex items-center justify-center text-[var(--bg)] text-[0.6rem] font-bold">BM</div>
+        <AppLogo :size="28" :animated="false" />
         <span>© {{ year }} Bishworup Mollik</span>
         <span class="w-1 h-1 rounded-full bg-[var(--border-strong)]"></span>
         <span class="font-mono">Built with Nuxt</span>
